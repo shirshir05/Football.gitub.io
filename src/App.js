@@ -48,7 +48,7 @@ function App() {
             <Route path="/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
-            <Route path="/login">
+            <Route path="/Football.gitub.io/login">
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             {/* home pages: */}
