@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.hv-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+}
