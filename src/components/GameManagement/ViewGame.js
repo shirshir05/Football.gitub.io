@@ -4,13 +4,14 @@ import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
 import {goBack} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
+import NumberInput from '../InputFields/NumberInput';
 
-class ApproveTeamCreation extends Component{
+class ViewGame extends Component{
     
     state = {
-        teamsList : [],
-        displayTeamsList : [],
-        toApprove : "",
+        gameDetails : [],
+        displayGameDetails : ["No game was selected yet"],
+        gameId : "",
         successMessage : null
     };
 
@@ -19,9 +20,21 @@ class ApproveTeamCreation extends Component{
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmitClick = this.handleSubmitClick.bind(this)
 
+        
+    }
+
+    handleChange(e){
+        const {id , value} = e.target
+        this.setState(prevState => ({
+            ...prevState,
+            [id] : value
+        }))
+    }
+
+    sendGameId(gameId){
         new Promise((resolved, rejected) => {
             try{
-                axios.get(API_BASE_URL+'teamsforapproval')
+                axios.get(API_BASE_URL+'watchgameevent/'+gameId)
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)
@@ -36,20 +49,19 @@ class ApproveTeamCreation extends Component{
                       .then(list => {
                         this.setState(prevState => ({
                             ...prevState,
-                            'teamsList' : list
+                            'gameDetails' : list
                         }))
-                        return list;
-                
+                        return list;                
                       })
                     .then(result => {
                         // verify the result is valid and not empty
                         if(result && result[0] !== ""){
                             this.setState(prevState => ({
                                 ...prevState,
-                                'displayTeamsList' : result.map((team)=>{
+                                'displayGameDetails' : result.map((event)=>{
                                     return (
                                         <div className="form-group">
-                                            <label>{team}</label>
+                                            <label>{event}</label>
                                         </div>
                                     );
                                 })
@@ -59,14 +71,14 @@ class ApproveTeamCreation extends Component{
                             // result is undefined -> did not get a response from the server
                             this.setState(prevState => ({
                                 ...prevState,
-                                'displayTeamsList' :  ['There are no teams to approve']
+                                'displayGameDetails' :  ['There are no events in the selected game']
                             }))
                         }
                     })
                     .catch(error => {
                         this.setState(prevState => ({
                             ...prevState,
-                            'displayTeamsList' :  ['There are no teams to approve']
+                            'displayGameDetails' :  ['There are no events in the selected game']
                         }))
                     })          
             } catch (e) {
@@ -74,65 +86,26 @@ class ApproveTeamCreation extends Component{
             }
         })
     }
-
-    handleChange(e){
-        const {id , value} = e.target
-        this.setState(prevState => ({
-            ...prevState,
-            [id] : value
-        }))
-    }
-
-    approveTeamInServer(teamName){
-        axios.get(API_BASE_URL+'approveteam/'+teamName)
-            .then(function (response) {
-                if(response.status === 200){
-                    this.setState(prevState => ({
-                        ...prevState,
-                        'successMessage' : response.data
-                    }))
-                    this.props.showError(null)
-                } else{
-                    this.props.showError(response.data);
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });   
-    }
     
     handleSubmitClick(){
-        // e.preventDefault();
-        let a = this.state.toApprove
-        let b =  this.state.teamsList
-        if(a.length && b.some(item => this.state.toApprove === item)) {
-            this.approveTeamInServer(this.state.toApprove)    
+        if(this.state.gameId.length) {
+            this.sendGameId(this.state.gameId)    
         } else {
-            this.props.showError('Please enter a valid team name');
+            this.props.showError('Please enter a valid game ID');
         }
     }
 
     render() {
-        this.props.updateTitle('Approve teams')
+        this.props.updateTitle('Watch Game Events')
         return(
             <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
                 <form>
+                    <NumberInput label="Enter game ID" id="gameId" placeholder="Enter in digits" state={this.state.gameId} handleChange={this.handleChange}/>
+                    <SubmitButton handleSubmitClick={this.handleSubmitClick} buttonText="Watch events"/>
                     <div className="form-group text-left">
-                    <label className="row">Teams for approval:</label>
-                    {/* <label>{teamsDisplay}</label> */}
-                    {this.state.displayTeamsList}
+                    <label className="row">Game Events:</label>
+                    {this.state.displayGameDetails}
                     </div>
-                    <div className="form-group text-left">
-                    <label>Enter team name to approve</label>
-                    <input type="text"
-                        className="form-control"
-                        id="toApprove"
-                        placeholder="Enter team name"
-                        value={this.state.toApprove}
-                        onChange={this.handleChange}
-                    />
-                    </div>
-                    <SubmitButton handleSubmitClick={this.handleSubmitClick} buttonText="Approve team"/>
                 </form>
                 <div className="alert alert-success mt-2" style={{display: this.state.successMessage ? 'block' : 'none' }} role="alert">
                     {this.state.successMessage}
@@ -145,4 +118,4 @@ class ApproveTeamCreation extends Component{
     }
 }
 
-export default withRouter(ApproveTeamCreation);
+export default withRouter(ViewGame);

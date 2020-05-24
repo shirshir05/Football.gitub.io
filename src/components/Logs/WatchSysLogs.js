@@ -4,11 +4,12 @@ import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
 import {goBack} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
+import TextInput from '../InputFields/TextInput';
 
-function AddLeague(props) {
-    props.updateTitle('Creat a new league')
-    const [leagueDetails , setDetails] = useState({
-        name : "",
+function WatchSysLogs(props) {
+    props.updateTitle('Watch System Logs')
+    const [details , setDetails] = useState({
+        path : "",
         successMessage: null
     })
     const handleChange = (e) => {
@@ -19,10 +20,7 @@ function AddLeague(props) {
         }))
     }
     const sendDetailsToServer = () => {
-        const payload=`{
-            name:'${leagueDetails.name}',
-        }`
-        axios.post(API_BASE_URL+'defineleague', payload)
+        axios.post(API_BASE_URL+'watchlogger/'+details.path)
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({
@@ -39,31 +37,22 @@ function AddLeague(props) {
             });   
     }
     const handleSubmitClick = () => {
-        // e.preventDefault();
-        if(leagueDetails.name.length) {
+        if(details.path.length) {
             sendDetailsToServer()    
         } else {
-            props.showError('Please enter a valid name');
+            props.showError('Please enter a valid path');
         }
     }
     return(
         <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
             <form>
-                <div className="form-group text-left">
-                <label htmlFor="inputName">League name</label>
-                <input type="text"
-                    className="form-control"
-                    id="name"
-                    placeholder="Enter name"
-                    value={leagueDetails.name}
-                    onChange={handleChange}
-                />
-                {/* <small id="rolelHelp" className="form-text text-muted">i.e. Referee, Union Representitive, Coach, Player, Team Manager, Team Owner, Fan.</small> */}
-                </div>                
-                <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Create league"/>
+            <div className="form-group text-center">
+                <TextInput label="Insert a path to save the logs file" id="path" placeholder="Enter a path" state={details.path} handleChange={handleChange}/>
+            </div>            
+            <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Select path for logs"/>
             </form>
-            <div className="alert alert-success mt-2" style={{display: leagueDetails.successMessage ? 'block' : 'none' }} role="alert">
-                {leagueDetails.successMessage}
+            <div className="alert alert-success mt-2" style={{display: details.successMessage ? 'block' : 'none' }} role="alert">
+                {details.successMessage}
             </div>
             <div className="mt-2">
                 <span className="loginText" onClick={() => goBack()}>Back to menu</span> 
@@ -72,4 +61,4 @@ function AddLeague(props) {
     )
 }
 
-export default withRouter(AddLeague);
+export default withRouter(WatchSysLogs);

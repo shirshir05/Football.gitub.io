@@ -2,6 +2,7 @@ import React from 'react';
 import MenuButton from '../MenuButton/MenuButton'
 import { withRouter } from "react-router-dom";
 import {redirectToRegister, redirectToLogin} from '../Redirect/Redirect'
+import Search from '../Search/Search';
 
 function HomeGuest(props) {
     props.updateTitle('Home')
@@ -14,6 +15,7 @@ function HomeGuest(props) {
             <MenuButton btnText="Score Tables"></MenuButton>
             <MenuButton btnText="Players and Coaches Personal Pages"></MenuButton>
             <MenuButton btnText="Team Pages"></MenuButton>
+            <Search/>
         </div>
     )
 }

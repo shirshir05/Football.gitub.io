@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import {Router, Switch, Route} from "react-router-dom"
 import AlertComponent from './components/AlertComponent/AlertComponent'
 import history from "../src/components/history"
+import {HOST} from "./constants/apiContants"
 
 // pages:
   // entrance:
@@ -30,6 +31,12 @@ import AddTeamToLeague from './components/LeagueManagement/AddTeamToLeague'
 import AddRemoveReferee from './components/ManageReferees/AddRemoveReferee'
 import HomeReferee from './components/Home/HomeReferee'
 import EditEvent from './components/GameManagement/EditEvent'
+import HomeSysAdmin from './components/Home/HomeSysAdmin'
+import WatchSysLogs from './components/Logs/WatchSysLogs'
+import ChangeTeamStatusSysAdmin from './components/TeamManagement/ExistingTeam/ChangeTeamStatusSysAdmin'
+import AnswerComplaints from './components/Complaints/AnswerComplaints'
+import SaveGame from './components/GameManagement/SaveGame'
+import ViewGame from './components/GameManagement/ViewGame'
 
 
 function App() {
@@ -45,7 +52,7 @@ function App() {
             <Route path="/" exact={true}>
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
-            <Route path="/register">
+            <Route path= "/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             <Route path="/login">
@@ -62,12 +69,26 @@ function App() {
               <HomeTeamManager updateTitle={updateTitle}/>
             </Route>
             <Route path="/home/referee">
-              <HomeReferee updateTitle={updateTitle}/>
+              <HomeReferee updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
+            </Route>
+            <Route path="/home/systemadministrator">
+              <HomeSysAdmin updateTitle={updateTitle}/>
             </Route>
             <Route path="/home/guest">
               <HomeGuest updateTitle={updateTitle}/>
             </Route>
             {/* actions: */}
+              {/* sys admin: */}
+            <Route path='/home/watchlogs'>
+              <WatchSysLogs updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+            <Route path='/home/changeteamstatusadmin'>
+              <ChangeTeamStatusSysAdmin updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+            <Route path='/home/answercomplaints'>
+              <AnswerComplaints updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+              {/* league and team: */}
             <Route path='/home/addleague'>
               <AddLeague updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
@@ -108,7 +129,13 @@ function App() {
               <AddRemoveReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
             <Route path='/home/editevent'>
-              <EditEvent updateTitle={updateTitle} showError={updateErrorMessage}/>
+              <EditEvent updateTitle={updateTitle} showError={updateErrorMessage} newSeason={newSeason}/>
+            </Route>
+            <Route path='/home/savegame'>
+              <SaveGame updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+            <Route path='/home/viewgame'>
+              <ViewGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
           </Switch>
           <AlertComponent errorMessage={errorMessage} hideError={updateErrorMessage}/>

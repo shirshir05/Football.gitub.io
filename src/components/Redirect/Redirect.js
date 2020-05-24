@@ -1,4 +1,6 @@
 import history from '../history';
+import {API_BASE_URL} from '../../constants/apiContants';
+import axios from 'axios';
 
 export function redirectToHome (username, alreadyIn) {
     // props.updateTitle('Home')
@@ -21,6 +23,7 @@ export function goBack(){
 }
 
 export function redirectToLogin(){
+    axios.get(API_BASE_URL+'logout')
     history.push('/login'); 
 }
 
@@ -50,6 +53,10 @@ export function gotoApproveTeam(){
 
 export function gotoChangeStatus(){
     history.push('changeteamstatus')
+}
+
+export function gotoChangeStatusAdmin(){
+    history.push('changeteamstatusadmin')
 }
 
 export function gotoAddRemove(){
@@ -82,4 +89,20 @@ export function gotoAddRemoveReferee(){
 
 export function gotoEditEvent(){
     history.push('editevent')
+}
+
+export function gotoWatchLogs(){
+    history.push('watchlogs')
+}
+
+export function gotoAnswerComplaints(){
+    history.push('answercomplaints')
+}
+
+export function gotoSaveGame(){
+    history.push('savegame')
+}
+
+export function gotoWatchGame(){
+    history.push('viewgame')
 }
