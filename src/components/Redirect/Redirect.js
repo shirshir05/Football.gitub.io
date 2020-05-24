@@ -103,6 +103,10 @@ export function gotoSaveGame(){
     history.push('savegame')
 }
 
-export function gotoWatchGame(){
-    history.push('viewgame')
+export function gotoWatchGameEvents(){
+    history.push('viewgameevents')
+}
+
+export function gotoWatchGames(){
+    history.push('viewgames')
 }

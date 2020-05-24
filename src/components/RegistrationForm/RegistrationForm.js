@@ -130,7 +130,7 @@ function RegistrationForm(props) {
                 <span className="loginText" onClick={() => redirectToLogin()}>Login here</span> 
             </div>
             <div className="mt-2">
-                <span className="loginText" onClick={() => redirectToHome('','guest')}>Enter as a guest</span> 
+                <span className="loginText" onClick={() => redirectToHome('','guest')}>Go to home page</span> 
             </div>            
         </div>
     )

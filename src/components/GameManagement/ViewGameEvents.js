@@ -6,7 +6,7 @@ import {goBack} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
 import NumberInput from '../InputFields/NumberInput';
 
-class ViewGame extends Component{
+class ViewGameEvents extends Component{
     
     state = {
         gameDetails : [],
@@ -118,4 +118,4 @@ class ViewGame extends Component{
     }
 }
 
-export default withRouter(ViewGame);
+export default withRouter(ViewGameEvents);
