@@ -41,12 +41,8 @@ import AnswerComplaints from './components/Complaints/AnswerComplaints'
 import SaveGame from './components/GameManagement/SaveGame'
 import ViewGameEvents from './components/GameManagement/ViewGameEvents'
 import ViewGamesReferee from './components/GameManagement/ViewGamesReferee'
-<<<<<<< HEAD
 import SendComplaint from './components/Complaints/SendComplaint'
 import RegisterToGame from './components/GameManagement/RegisterToGame'
-=======
->>>>>>> almost
-
 
 function App() {
   const [title, updateTitle] = useState(null)
