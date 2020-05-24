@@ -5,13 +5,14 @@ import { withRouter } from "react-router-dom";
 import {goBack} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
 
-function AddTeamToLeague(props) {
-    props.updateTitle('Add team or referee to season in league')
+function SaveGame(props) {
+    props.updateTitle('Save Game Results')
     const [details , setDetails] = useState({
         leaugueName : "",
         season : "2000",
-        name:"",
-        teamOrReferee:"team",
+        hostGoals:"",
+        guestGoals:"",
+        gameId:"",
         successMessage: null
     })
     const handleChange = (e) => {
@@ -23,26 +24,15 @@ function AddTeamToLeague(props) {
             }))
         }
     }
-    const sendDetailsToServer = (object) => {
-        var payload;
-        var request;
-        if(object === 'team'){
-            payload=`{
-                nameteam:${details.name},
-                nameleague:${details.leaugueName},
-                year:'${details.season}'
-            }`
-            request = 'addteamtoleague'
-        }
-        else if(object === 'referee'){
-            payload=`{
-                usernamereferee:${details.name},
-                nameleague:${details.leaugueName},
-                year:'${details.season}'
-            }`
-            request = 'setrefereeonleague'
-        }
-        axios.post(API_BASE_URL+request, payload)
+    const sendDetailsToServer = () => {
+        const payload=`{
+            league:'${details.leaugueName}',
+            seasonYear:'${details.season}',
+            hostGoals:'${details.hostGoals}',
+            guestGoals:'${details.guestGoals}',
+            gameId:'${details.gameId}'
+        }`
+        axios.post(API_BASE_URL+'savegame', payload)
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({
@@ -59,8 +49,7 @@ function AddTeamToLeague(props) {
             });   
     }
     const handleSubmitClick = () => {
-        //e.preventDefault();
-        if(details.leaugueName.length && details.name.length){
+        if(details.leaugueName.length && details.hostGoals.length && details.guestGoals.length && details.gameId.length){
             sendDetailsToServer()
         }
         else{
@@ -110,26 +99,39 @@ function AddTeamToLeague(props) {
                 </div>
                 </div>
                 <div className="form-group text-left">
-                <label>Select one:</label>
-                <div className="form-group text-center">
-                    <select id="teamOrReferee" value={details.teamOrReferee} onChange={handleChange} className="dropdown-toggle btn btn-primary">
-                        <option value="team" className="form-control">Team</option>
-                        <option value="referee" className="form-control">Referee</option>
-                    </select>
-                </div>
-                </div>
-                <div className="form-group text-left">
-                <label htmlFor="inputUsername">Name (of team or referee)</label>
+                <label htmlFor="inputUsername">Enter game ID</label>
                 <input type="text"
+                    pattern="[0-9]*"
                     className="form-control"
-                    id="name"
-                    placeholder="Enter name"
-                    value={details.name}
+                    id="gameId"
+                    placeholder="Enter in digits"
+                    value={details.gameId}
                     onChange={handleChange}
                 />
-                <small id="info" className="form-text text-muted">Note: league, season and team or referee have to be defined in the system</small>
                 </div>
-                <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Add"/>
+                <div className="form-group text-left">
+                <label htmlFor="inputUsername">Host final points</label>
+                <input type="text"
+                    pattern="[0-9]*"
+                    className="form-control"
+                    id="hostGoals"
+                    placeholder="Enter in digits"
+                    value={details.hostGoals}
+                    onChange={handleChange}
+                />
+                </div>
+                <div className="form-group text-left">
+                <label htmlFor="inputUsername">Guest final points</label>
+                <input type="text"
+                    pattern="[0-9]*"
+                    className="form-control"
+                    id="guestGoals"
+                    placeholder="Enter in digits"
+                    value={details.guestGoals}
+                    onChange={handleChange}
+                />
+                </div>                
+                <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Save game"/>
             </form>
             <div className="alert alert-success mt-2" style={{display: details.successMessage ? 'block' : 'none' }} role="alert">
                 {details.successMessage}
@@ -141,4 +143,4 @@ function AddTeamToLeague(props) {
     )
 }
 
-export default withRouter(AddTeamToLeague);
+export default withRouter(SaveGame);

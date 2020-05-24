@@ -4,13 +4,16 @@ import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
 import {goBack} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
+import NumberInput from '../InputFields/NumberInput'
+import TextInput from '../InputFields/TextInput';
 
-class ApproveTeamCreation extends Component{
+class AnswerComplaints extends Component{
     
     state = {
-        teamsList : [],
-        displayTeamsList : [],
-        toApprove : "",
+        complaintsList : [],
+        displayComplaintsList : [],
+        id : "",
+        answer: "",
         successMessage : null
     };
 
@@ -21,7 +24,7 @@ class ApproveTeamCreation extends Component{
 
         new Promise((resolved, rejected) => {
             try{
-                axios.get(API_BASE_URL+'teamsforapproval')
+                axios.get(API_BASE_URL+'watchcomplaints')
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)
@@ -36,7 +39,7 @@ class ApproveTeamCreation extends Component{
                       .then(list => {
                         this.setState(prevState => ({
                             ...prevState,
-                            'teamsList' : list
+                            'complaintsList' : list
                         }))
                         return list;
                 
@@ -46,7 +49,7 @@ class ApproveTeamCreation extends Component{
                         if(result && result[0] !== ""){
                             this.setState(prevState => ({
                                 ...prevState,
-                                'displayTeamsList' : result.map((team)=>{
+                                'displayComplaintsList' : result.map((team)=>{
                                     return (
                                         <div className="form-group">
                                             <label>{team}</label>
@@ -59,14 +62,14 @@ class ApproveTeamCreation extends Component{
                             // result is undefined -> did not get a response from the server
                             this.setState(prevState => ({
                                 ...prevState,
-                                'displayTeamsList' :  ['There are no teams to approve']
+                                'displayComplaintsList' :  ['There are no complaints']
                             }))
                         }
                     })
                     .catch(error => {
                         this.setState(prevState => ({
                             ...prevState,
-                            'displayTeamsList' :  ['There are no teams to approve']
+                            'displayComplaintsList' :  ['There are no complaints']
                         }))
                     })          
             } catch (e) {
@@ -76,15 +79,21 @@ class ApproveTeamCreation extends Component{
     }
 
     handleChange(e){
-        const {id , value} = e.target
-        this.setState(prevState => ({
-            ...prevState,
-            [id] : value
-        }))
+        if(e.target.validity.valid){
+            const {id , value} = e.target
+            this.setState(prevState => ({
+                ...prevState,
+                [id] : value
+            }))
+        }
     }
 
-    approveTeamInServer(teamName){
-        axios.get(API_BASE_URL+'approveteam/'+teamName)
+    answerComplaint(){
+        const payload=`{
+            ID:'${this.state.id}',
+            answer:'${this.state.answer}'            
+        }`
+        axios.post(API_BASE_URL+'answercomplaints', payload)
             .then(function (response) {
                 if(response.status === 200){
                     this.setState(prevState => ({
@@ -102,37 +111,25 @@ class ApproveTeamCreation extends Component{
     }
     
     handleSubmitClick(){
-        // e.preventDefault();
-        let a = this.state.toApprove
-        let b =  this.state.teamsList
-        if(a.length && b.some(item => this.state.toApprove === item)) {
-            this.approveTeamInServer(this.state.toApprove)    
+        if(this.state.id.length && this.state.answer.length) {
+            this.answerComplaint()    
         } else {
-            this.props.showError('Please enter a valid team name');
+            this.props.showError('Please enter a valid complaint id and answer');
         }
     }
 
     render() {
-        this.props.updateTitle('Approve teams')
+        this.props.updateTitle('Answer Complaints')
         return(
             <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
                 <form>
                     <div className="form-group text-left">
-                    <label className="row">Teams for approval:</label>
-                    {/* <label>{teamsDisplay}</label> */}
-                    {this.state.displayTeamsList}
+                    <label className="row">Active Complaints:</label>
+                    {this.state.displayComplaintsList}
                     </div>
-                    <div className="form-group text-left">
-                    <label>Enter team name to approve</label>
-                    <input type="text"
-                        className="form-control"
-                        id="toApprove"
-                        placeholder="Enter team name"
-                        value={this.state.toApprove}
-                        onChange={this.handleChange}
-                    />
-                    </div>
-                    <SubmitButton handleSubmitClick={this.handleSubmitClick} buttonText="Approve team"/>
+                    <NumberInput label="Enter complaint ID to approve" id="id" placeholder="Enter in digits" state={this.state.id} handleChange={this.handleChange}/>
+                    <TextInput label="Your Answer" id="answer" placeholder="Enter answer" state={this.state.answer} handleChange={this.handleChange}/>
+                    <SubmitButton handleSubmitClick={this.handleSubmitClick} buttonText="Submit answer"/>
                 </form>
                 <div className="alert alert-success mt-2" style={{display: this.state.successMessage ? 'block' : 'none' }} role="alert">
                     {this.state.successMessage}
@@ -145,4 +142,4 @@ class ApproveTeamCreation extends Component{
     }
 }
 
-export default withRouter(ApproveTeamCreation);
+export default withRouter(AnswerComplaints);

@@ -52,6 +52,10 @@ export function gotoChangeStatus(){
     history.push('changeteamstatus')
 }
 
+export function gotoChangeStatusAdmin(){
+    history.push('changeteamstatusadmin')
+}
+
 export function gotoAddRemove(){
     history.push('addremove')
 }
@@ -82,4 +86,20 @@ export function gotoAddRemoveReferee(){
 
 export function gotoEditEvent(){
     history.push('editevent')
+}
+
+export function gotoWatchLogs(){
+    history.push('watchlogs')
+}
+
+export function gotoAnswerComplaints(){
+    history.push('answercomplaints')
+}
+
+export function gotoSaveGame(){
+    history.push('savegame')
+}
+
+export function gotoWatchGame(){
+    history.push('viewgame')
 }
