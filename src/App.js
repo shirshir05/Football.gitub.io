@@ -39,6 +39,8 @@ import SaveGame from './components/GameManagement/SaveGame'
 import ViewGameEvents from './components/GameManagement/ViewGameEvents'
 import ViewGamesReferee from './components/GameManagement/ViewGamesReferee'
 import HomeFan from './components/Home/HomeFan'
+import SendComplaint from './components/Complaints/SendComplaint'
+import RegisterToGame from './components/GameManagement/RegisterToGame'
 
 
 function App() {
@@ -93,6 +95,10 @@ function App() {
             <Route path='/home/answercomplaints'>
               <AnswerComplaints updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
+              {/* Complaints: */}
+            <Route path='/home/sendcomplaint'>
+              <SendComplaint updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
               {/* league and team: */}
             <Route path='/home/addleague'>
               <AddLeague updateTitle={updateTitle} showError={updateErrorMessage}/>
@@ -133,6 +139,7 @@ function App() {
             <Route path='/home/addremovereferee'>
               <AddRemoveReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
+              {/* events and games: */}
             <Route path='/home/editevent'>
               <EditEvent updateTitle={updateTitle} showError={updateErrorMessage} newSeason={newSeason}/>
             </Route>
@@ -144,6 +151,9 @@ function App() {
             </Route>
             <Route path='/home/viewgames'>
               <ViewGamesReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+            <Route path='/home/gamealert'>
+              <RegisterToGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
           </Switch>
           <AlertComponent errorMessage={errorMessage} hideError={updateErrorMessage}/>

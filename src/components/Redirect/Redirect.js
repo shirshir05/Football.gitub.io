@@ -110,3 +110,11 @@ export function gotoWatchGameEvents(){
 export function gotoWatchGames(){
     history.push('viewgames')
 }
+
+export function gotoSendComplaint(){
+    history.push('sendcomplaint')
+}
+
+export function gotoGameAlert(){
+    history.push('gamealert')
+}
