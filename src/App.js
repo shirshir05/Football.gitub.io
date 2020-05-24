@@ -62,7 +62,7 @@ function App() {
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             {/* home pages: */}
-            <Route path="/" exact={true}>
+            <Route path="/Football.gitub.io/" exact={true}>
               <HomeGuest updateTitle={updateTitle}/>
             </Route>
             <Route path="/home/guest">
