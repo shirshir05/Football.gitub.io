@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import {Router, Switch, Route} from "react-router-dom"
 import AlertComponent from './components/AlertComponent/AlertComponent'
 import history from "../src/components/history"
+import {HOST} from "./constants/apiContants"
 
 // pages:
   // entrance:
@@ -51,7 +52,7 @@ function App() {
             <Route path="/" exact={true}>
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
-            <Route path="/register">
+            <Route path= "/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             <Route path="/login">

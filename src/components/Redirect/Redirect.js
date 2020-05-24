@@ -1,4 +1,6 @@
 import history from '../history';
+import {API_BASE_URL} from '../../constants/apiContants';
+import axios from 'axios';
 
 export function redirectToHome (username, alreadyIn) {
     // props.updateTitle('Home')
@@ -21,6 +23,7 @@ export function goBack(){
 }
 
 export function redirectToLogin(){
+    axios.get(API_BASE_URL+'logout')
     history.push('/login'); 
 }
 
