@@ -38,6 +38,7 @@ import AnswerComplaints from './components/Complaints/AnswerComplaints'
 import SaveGame from './components/GameManagement/SaveGame'
 import ViewGameEvents from './components/GameManagement/ViewGameEvents'
 import ViewGamesReferee from './components/GameManagement/ViewGamesReferee'
+import HomeFan from './components/Home/HomeFan'
 
 
 function App() {
@@ -50,9 +51,6 @@ function App() {
       <Header title={title}/>
         <div className="container d-flex align-items-center flex-column">
           <Switch>
-            <Route path="/" exact={true}>
-              <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
-            </Route>
             <Route path= "/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
@@ -60,6 +58,15 @@ function App() {
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             {/* home pages: */}
+            <Route path="/" exact={true}>
+              <HomeGuest updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/guest">
+              <HomeGuest updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/fan">
+              <HomeFan updateTitle={updateTitle}/>
+            </Route>
             <Route path="/home/unionrepresentative">
               <HomeUnionRepresentative updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
             </Route>
@@ -74,9 +81,6 @@ function App() {
             </Route>
             <Route path="/home/systemadministrator">
               <HomeSysAdmin updateTitle={updateTitle}/>
-            </Route>
-            <Route path="/home/guest">
-              <HomeGuest updateTitle={updateTitle}/>
             </Route>
             {/* actions: */}
               {/* sys admin: */}
