@@ -9,6 +9,7 @@ function AddRole(props) {
     props.updateTitle('Add a user type (in the same team)')
     const [details , setDetails] = useState({
         userType : "teamowner",
+        password : "",
         successMessage: null
     })
     const handleChange = (e) => {
@@ -21,6 +22,7 @@ function AddRole(props) {
     const sendDetailsToServer = () => {
         const payload=`{
             role:'${details.userType}'
+            password:'${details.password}'
         }`
         axios.post(API_BASE_URL+'addrole', payload)
             .then(function (response) {
@@ -54,6 +56,16 @@ function AddRole(props) {
                         <option value="coach" className="form-control">Coach</option>
                     </select>
                 </div>
+                </div>
+                <div className="form-group text-left">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" 
+                        className="form-control" 
+                        id="password" 
+                        placeholder="Password"
+                        value={details.password}
+                        onChange={handleChange} 
+                    />
                 </div>
                 <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Add role to user"/>
             </form>

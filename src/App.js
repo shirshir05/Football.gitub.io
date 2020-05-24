@@ -15,6 +15,10 @@ import HomeUnionRepresentative from './components/Home/HomeUR'
 import HomeGuest from './components/Home/HomeGuest'
 import HomeTeamOwner from './components/Home/HomeTO'
 import HomeTeamManager from './components/Home/HomeTM'
+import HomeReferee from './components/Home/HomeReferee'
+import HomeFan from './components/Home/HomeFan'
+import HomePlayer from './components/Home/HomePlayer'
+import HomeCoach from './components/Home/HomeCoach'
   // functionalities:
 import AddLeague from './components/LeagueManagement/AddALeague'
 import TeamMenu from './components/TeamManagement/TeamMenu'
@@ -29,7 +33,6 @@ import UpdateSeasonInLeague from './components/LeagueManagement/UpdateSeasonInLe
 import SchedulingPolicy from './components/LeagueManagement/SchedulingPolicy'
 import AddTeamToLeague from './components/LeagueManagement/AddTeamToLeague'
 import AddRemoveReferee from './components/ManageReferees/AddRemoveReferee'
-import HomeReferee from './components/Home/HomeReferee'
 import EditEvent from './components/GameManagement/EditEvent'
 import HomeSysAdmin from './components/Home/HomeSysAdmin'
 import WatchSysLogs from './components/Logs/WatchSysLogs'
@@ -38,7 +41,6 @@ import AnswerComplaints from './components/Complaints/AnswerComplaints'
 import SaveGame from './components/GameManagement/SaveGame'
 import ViewGameEvents from './components/GameManagement/ViewGameEvents'
 import ViewGamesReferee from './components/GameManagement/ViewGamesReferee'
-import HomeFan from './components/Home/HomeFan'
 import SendComplaint from './components/Complaints/SendComplaint'
 import RegisterToGame from './components/GameManagement/RegisterToGame'
 
@@ -77,6 +79,12 @@ function App() {
             </Route>
             <Route path="/home/teammanager">
               <HomeTeamManager updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/player">
+              <HomePlayer updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/coach">
+              <HomeCoach updateTitle={updateTitle}/>
             </Route>
             <Route path="/home/referee">
               <HomeReferee updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
@@ -146,7 +154,7 @@ function App() {
             <Route path='/home/savegame'>
               <SaveGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/viewgameevents'>
+            <Route path='/viewgameevents'>
               <ViewGameEvents updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
             <Route path='/home/viewgames'>

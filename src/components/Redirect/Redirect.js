@@ -104,7 +104,7 @@ export function gotoSaveGame(){
 }
 
 export function gotoWatchGameEvents(){
-    history.push('viewgameevents')
+    history.push('/viewgameevents')
 }
 
 export function gotoWatchGames(){

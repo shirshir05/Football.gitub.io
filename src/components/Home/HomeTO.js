@@ -14,10 +14,10 @@ function HomeTeamOwner(props) {
             <h1>
             Welcome Team Owner
             </h1>
-            <MenuButton btnText="Add a user type to your user" handle={gotoAddRole}></MenuButton>
             <MenuButton btnText="Create a team" handle={gotoCreateTeam}></MenuButton>
             <MenuButton btnText="Manage existing team" handle={gotoTeamMenu}></MenuButton>
             <MenuButton btnText="Add permissions to a team manager" handle={gotoAddPermissionsTM}></MenuButton>
+            <MenuButton btnText="Add a user type to your user" handle={gotoAddRole}></MenuButton>
             <MenuButton btnText="Enter other roles menus" handle={gotoNavigateRole}></MenuButton>
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div>  
