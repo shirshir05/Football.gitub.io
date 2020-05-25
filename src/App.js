@@ -55,112 +55,112 @@ function App() {
       <Header title={title}/>
         <div className="container d-flex align-items-center flex-column">
           <Switch>
-            <Route path= "/register">
+            <Route path= "/Football.gitub.io/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
-            <Route path="/login">
+            <Route path="/Football.gitub.io/login">
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             {/* home pages: */}
             <Route path="/Football.gitub.io/" exact={true}>
               <HomeGuest updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/guest">
+            <Route path="/Football.gitub.io/home/guest">
               <HomeGuest updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/fan">
+            <Route path="/Football.gitub.io/home/fan">
               <HomeFan updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/unionrepresentative">
+            <Route path="/Football.gitub.io/home/unionrepresentative">
               <HomeUnionRepresentative updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
             </Route>
-            <Route path="/home/teamowner">
+            <Route path="/Football.gitub.io/home/teamowner">
               <HomeTeamOwner updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/teammanager">
+            <Route path="/Football.gitub.io/home/teammanager">
               <HomeTeamManager updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/player">
+            <Route path="/Football.gitub.io/home/player">
               <HomePlayer updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/coach">
+            <Route path="/Football.gitub.io/home/coach">
               <HomeCoach updateTitle={updateTitle}/>
             </Route>
-            <Route path="/home/referee">
+            <Route path="/Football.gitub.io/home/referee">
               <HomeReferee updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
             </Route>
-            <Route path="/home/systemadministrator">
+            <Route path="/Football.gitub.io/home/systemadministrator">
               <HomeSysAdmin updateTitle={updateTitle}/>
             </Route>
             {/* actions: */}
               {/* sys admin: */}
-            <Route path='/home/watchlogs'>
+            <Route path='/Football.gitub.io/home/watchlogs'>
               <WatchSysLogs updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/changeteamstatusadmin'>
+            <Route path='/Football.gitub.io/home/changeteamstatusadmin'>
               <ChangeTeamStatusSysAdmin updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/answercomplaints'>
+            <Route path='/Football.gitub.io/home/answercomplaints'>
               <AnswerComplaints updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
               {/* Complaints: */}
-            <Route path='/home/sendcomplaint'>
+            <Route path='/Football.gitub.io/home/sendcomplaint'>
               <SendComplaint updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
               {/* league and team: */}
-            <Route path='/home/addleague'>
+            <Route path='/Football.gitub.io/home/addleague'>
               <AddLeague updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/team'>
+            <Route path='/Football.gitub.io/home/team'>
               <TeamMenu updateTitle={updateTitle}/>
             </Route>
-            <Route path='/home/createteam'>
+            <Route path='/Football.gitub.io/home/createteam'>
               <CreateTeam updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/approveteam'>
+            <Route path='/Football.gitub.io/home/approveteam'>
               <ApproveTeamCreation updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/changeteamstatus'>
+            <Route path='/Football.gitub.io/home/changeteamstatus'>
               <ChangeTeamStatus updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/addremove'>
+            <Route path='/Football.gitub.io/home/addremove'>
               <AddRemoveObject updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/addrole'>
+            <Route path='/Football.gitub.io/home/addrole'>
               <AddRole updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/addpermissionstm'>
+            <Route path='/Football.gitub.io/home/addpermissionstm'>
               <AddPermissionsToTM updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/navigaterole'>
+            <Route path='/Football.gitub.io/home/navigaterole'>
               <NavigateInRoles updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/updateseason'>
+            <Route path='/Football.gitub.io/home/updateseason'>
               <UpdateSeasonInLeague updateTitle={updateTitle} showError={updateErrorMessage} newSeason={newSeason}/>
             </Route>
-            <Route path='/home/schedulingpolicy'>
+            <Route path='/Football.gitub.io/home/schedulingpolicy'>
               <SchedulingPolicy updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/addteamtoleague'>
+            <Route path='/Football.gitub.io/home/addteamtoleague'>
               <AddTeamToLeague updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/addremovereferee'>
+            <Route path='/Football.gitub.io/home/addremovereferee'>
               <AddRemoveReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
               {/* events and games: */}
-            <Route path='/home/editevent'>
+            <Route path='/Football.gitub.io/home/editevent'>
               <EditEvent updateTitle={updateTitle} showError={updateErrorMessage} newSeason={newSeason}/>
             </Route>
-            <Route path='/home/savegame'>
+            <Route path='/Football.gitub.io/home/savegame'>
               <SaveGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/viewgameevents'>
+            <Route path='/Football.gitub.io/viewgameevents'>
               <ViewGameEvents updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/viewgames'>
+            <Route path='/Football.gitub.io/home/viewgames'>
               <ViewGamesReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/gamealert'>
+            <Route path='/Football.gitub.io/home/gamealert'>
               <RegisterToGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
           </Switch>
