@@ -4,12 +4,12 @@ import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
 import {goBack} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
+import TextInput from '../InputFields/TextInput';
 
-function AddRole(props) {
-    props.updateTitle('Add a user type (in the same team)')
+function SendComplaint(props){
+    props.updateTitle('Send a Complaint')
     const [details , setDetails] = useState({
-        userType : "teamowner",
-        password : "",
+        complaint : "",
         successMessage: null
     })
     const handleChange = (e) => {
@@ -21,10 +21,9 @@ function AddRole(props) {
     }
     const sendDetailsToServer = () => {
         const payload=`{
-            role:'${details.userType}'
-            password:'${details.password}'
+            complaintdescription:${details.complaint}
         }`
-        axios.post(API_BASE_URL+'addrole', payload)
+        axios.post(API_BASE_URL+'sendcomplaint', payload)
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({
@@ -41,33 +40,17 @@ function AddRole(props) {
             });   
     }
     const handleSubmitClick = () => {
-        sendDetailsToServer()    
+        if(details.complaint.length) {
+            sendDetailsToServer(details.objectType)    
+        } else {
+            props.showError('Please enter a valid complaint');
+        }
     }
     return(
         <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
             <form>
-                <div className="form-group text-left">
-                <label>Select a role to add:</label>
-                <div className="form-group text-center">
-                    <select id="userType" value={details.userType} onChange={handleChange} className="dropdown-toggle btn btn-primary">
-                        <option value="teamowner" className="form-control">Team Owner</option>
-                        <option value="teammanager" className="form-control">Team Manager</option>
-                        <option value="player" className="form-control">Player</option>
-                        <option value="coach" className="form-control">Coach</option>
-                    </select>
-                </div>
-                </div>
-                <div className="form-group text-left">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" 
-                        className="form-control" 
-                        id="password" 
-                        placeholder="Password"
-                        value={details.password}
-                        onChange={handleChange} 
-                    />
-                </div>
-                <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Add role to user"/>
+                <TextInput label="Your complaint:" id="complaint" placeholder="Enter complaint" state={details.complaint} handleChange={handleChange}/>
+                <SubmitButton handleSubmitClick={handleSubmitClick} buttonText="Send"/>
             </form>
             <div className="alert alert-success mt-2" style={{display: details.successMessage ? 'block' : 'none' }} role="alert">
                 {details.successMessage}
@@ -79,4 +62,4 @@ function AddRole(props) {
     )
 }
 
-export default withRouter(AddRole);
+export default withRouter(SendComplaint);

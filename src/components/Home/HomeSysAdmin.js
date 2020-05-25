@@ -2,11 +2,14 @@ import React from 'react';
 import MenuButton from '../MenuButton/MenuButton'
 import { withRouter } from "react-router-dom";
 import {redirectToLogin, gotoWatchLogs, gotoChangeStatusAdmin, gotoAnswerComplaints} from '../Redirect/Redirect'
+import SearchAndAlerts from '../SearchAndMsg/MenuBar';
 
 function HomeSysAdmin(props) {
     props.updateTitle('Home')
     
     return(
+        <>
+        <SearchAndAlerts/>
         <div className="mt-2">
             <h1>
             Welcome System Administrator
@@ -17,7 +20,8 @@ function HomeSysAdmin(props) {
             <MenuButton btnText="Watch System Logs" handle={gotoWatchLogs}></MenuButton>
             {/* <MenuButton btnText="Edit personal details"></MenuButton> */}
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
-        </div>      
+        </div>  
+        </>    
     )
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import MenuButton from '../MenuButton/MenuButton'
 import { withRouter } from "react-router-dom";
 import {redirectToLogin, gotoEditEvent, gotoSaveGame,gotoWatchGames} from '../Redirect/Redirect'
+import SearchAndAlerts from '../SearchAndMsg/MenuBar';
 
 function HomeReferee(props) {
     props.updateTitle('Home')
@@ -17,6 +18,8 @@ function HomeReferee(props) {
     }
     
     return(
+        <>
+        <SearchAndAlerts/>
         <div className="mt-2">
             <h1>
             Welcome Referee
@@ -26,7 +29,8 @@ function HomeReferee(props) {
             <MenuButton btnText="Edit event" handle={existingEvent}></MenuButton>
             <MenuButton btnText="View all games" handle={gotoWatchGames}></MenuButton>
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
-        </div>      
+        </div>   
+        </>   
     )
 }
 

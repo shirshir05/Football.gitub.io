@@ -1,10 +1,10 @@
-import Modal from '../Modal/Modal'
 import React, {Component} from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../constants/apiContants';
+import {API_BASE_URL} from '../../../constants/apiContants';
 import { withRouter } from "react-router-dom";
-import SubmitButton from '../InputFields/SubmitButton';
-import TextInput from '../InputFields/TextInput';
+import SubmitButton from '../../InputFields/SubmitButton';
+import TextInput from '../../InputFields/TextInput';
+import ModalSearch from './ModalSearch';
 
 class Search extends Component{
     
@@ -156,7 +156,7 @@ class Search extends Component{
 
     render() {
         return(
-            <Modal buttonText="Search" Header="Search" Body= {this.body()}/>
+            <ModalSearch buttonText="Search" Header="Search" Body= {this.body()}/>
         )
     }
 }

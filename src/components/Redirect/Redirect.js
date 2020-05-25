@@ -104,9 +104,17 @@ export function gotoSaveGame(){
 }
 
 export function gotoWatchGameEvents(){
-    history.push('viewgameevents')
+    history.push('/viewgameevents')
 }
 
 export function gotoWatchGames(){
     history.push('viewgames')
+}
+
+export function gotoSendComplaint(){
+    history.push('sendcomplaint')
+}
+
+export function gotoGameAlert(){
+    history.push('gamealert')
 }

@@ -15,6 +15,10 @@ import HomeUnionRepresentative from './components/Home/HomeUR'
 import HomeGuest from './components/Home/HomeGuest'
 import HomeTeamOwner from './components/Home/HomeTO'
 import HomeTeamManager from './components/Home/HomeTM'
+import HomeReferee from './components/Home/HomeReferee'
+import HomeFan from './components/Home/HomeFan'
+import HomePlayer from './components/Home/HomePlayer'
+import HomeCoach from './components/Home/HomeCoach'
   // functionalities:
 import AddLeague from './components/LeagueManagement/AddALeague'
 import TeamMenu from './components/TeamManagement/TeamMenu'
@@ -29,7 +33,6 @@ import UpdateSeasonInLeague from './components/LeagueManagement/UpdateSeasonInLe
 import SchedulingPolicy from './components/LeagueManagement/SchedulingPolicy'
 import AddTeamToLeague from './components/LeagueManagement/AddTeamToLeague'
 import AddRemoveReferee from './components/ManageReferees/AddRemoveReferee'
-import HomeReferee from './components/Home/HomeReferee'
 import EditEvent from './components/GameManagement/EditEvent'
 import HomeSysAdmin from './components/Home/HomeSysAdmin'
 import WatchSysLogs from './components/Logs/WatchSysLogs'
@@ -38,6 +41,8 @@ import AnswerComplaints from './components/Complaints/AnswerComplaints'
 import SaveGame from './components/GameManagement/SaveGame'
 import ViewGameEvents from './components/GameManagement/ViewGameEvents'
 import ViewGamesReferee from './components/GameManagement/ViewGamesReferee'
+import SendComplaint from './components/Complaints/SendComplaint'
+import RegisterToGame from './components/GameManagement/RegisterToGame'
 
 
 function App() {
@@ -50,9 +55,6 @@ function App() {
       <Header title={title}/>
         <div className="container d-flex align-items-center flex-column">
           <Switch>
-            <Route path="/" exact={true}>
-              <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
-            </Route>
             <Route path= "/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
@@ -60,6 +62,15 @@ function App() {
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             {/* home pages: */}
+            <Route path="/Football.gitub.io/" exact={true}>
+              <HomeGuest updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/guest">
+              <HomeGuest updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/fan">
+              <HomeFan updateTitle={updateTitle}/>
+            </Route>
             <Route path="/home/unionrepresentative">
               <HomeUnionRepresentative updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
             </Route>
@@ -69,14 +80,17 @@ function App() {
             <Route path="/home/teammanager">
               <HomeTeamManager updateTitle={updateTitle}/>
             </Route>
+            <Route path="/home/player">
+              <HomePlayer updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home/coach">
+              <HomeCoach updateTitle={updateTitle}/>
+            </Route>
             <Route path="/home/referee">
               <HomeReferee updateTitle={updateTitle} updateNewSeason={updateNewSeason}/>
             </Route>
             <Route path="/home/systemadministrator">
               <HomeSysAdmin updateTitle={updateTitle}/>
-            </Route>
-            <Route path="/home/guest">
-              <HomeGuest updateTitle={updateTitle}/>
             </Route>
             {/* actions: */}
               {/* sys admin: */}
@@ -88,6 +102,10 @@ function App() {
             </Route>
             <Route path='/home/answercomplaints'>
               <AnswerComplaints updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+              {/* Complaints: */}
+            <Route path='/home/sendcomplaint'>
+              <SendComplaint updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
               {/* league and team: */}
             <Route path='/home/addleague'>
@@ -129,17 +147,21 @@ function App() {
             <Route path='/home/addremovereferee'>
               <AddRemoveReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
+              {/* events and games: */}
             <Route path='/home/editevent'>
               <EditEvent updateTitle={updateTitle} showError={updateErrorMessage} newSeason={newSeason}/>
             </Route>
             <Route path='/home/savegame'>
               <SaveGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
-            <Route path='/home/viewgameevents'>
+            <Route path='/viewgameevents'>
               <ViewGameEvents updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
             <Route path='/home/viewgames'>
               <ViewGamesReferee updateTitle={updateTitle} showError={updateErrorMessage}/>
+            </Route>
+            <Route path='/home/gamealert'>
+              <RegisterToGame updateTitle={updateTitle} showError={updateErrorMessage}/>
             </Route>
           </Switch>
           <AlertComponent errorMessage={errorMessage} hideError={updateErrorMessage}/>
