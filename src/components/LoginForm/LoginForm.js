@@ -1,19 +1,15 @@
 import React, {useState} from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import './LoginForm.css';
+
 import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
 import {redirectToHome, redirectToRegister} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
 
+import Cookies from 'js-cookie';
 
-const axios = require('axios').default;
-const tough = require('tough-cookie');
-const axiosCookieJarSupport = require('../../axios-cookiejar-support-master');
 
-axiosCookieJarSupport(axios);
-
-//const cookieJar = new tough.CookieJar();
 
 
 function LoginForm(props) {
@@ -23,10 +19,7 @@ function LoginForm(props) {
         password : "",
         successMessage: null
     })
-    const cookieJar = new tough.CookieJar();
-cookieJar.value = state.username;
-axios.defaults.jar = cookieJar;
-axios.defaults.withCredentials = true;
+   
 
     const handleChange = (e) => {
         const {id , value} = e.target   
@@ -51,16 +44,10 @@ axios.defaults.withCredentials = true;
             password: '${state.password}'
         }`
 
-        axios.post(API_BASE_URL+'login', payload,{
-            jar: cookieJar,
-            withCredentials: true
-        
-        })
+        axios.post(API_BASE_URL+'login', payload)
             .then(function (response) {
-                const config = response.config;
                 //axios.defaults.jar === config.jar
-            console.log(config.jar.toJSON());
-                console.log(cookieJar);
+                Cookies.set('key=1234; value=456');
                 if(response.status === 200){
                     setState(prevState => ({
                         ...prevState,
@@ -74,8 +61,6 @@ axios.defaults.withCredentials = true;
                 }
             })
             .catch(function (error) {
-             
-                console.log(cookieJar);
                 console.log(error);
             });
     }

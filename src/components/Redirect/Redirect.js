@@ -15,7 +15,7 @@ export function redirectToHome (username, alreadyIn) {
     else{ //is a guest
         kindofuser = 'guest'
     }
-    history.push(`/home/${kindofuser}`);
+    history.push(`/Football.gitub.io/home/${kindofuser}`);
 }
 
 export function goBack(){
@@ -24,11 +24,11 @@ export function goBack(){
 
 export function redirectToLogin(){
     axios.get(API_BASE_URL+'logout')
-    history.push('/login'); 
+    history.push('/Football.gitub.io/login'); 
 }
 
 export function redirectToRegister() {
-    history.push('/register')
+    history.push('/Football.gitub.io/register')
 }
 
 export function gotoAddLeague(){
@@ -104,7 +104,7 @@ export function gotoSaveGame(){
 }
 
 export function gotoWatchGameEvents(){
-    history.push('/viewgameevents')
+    history.push('/Football.gitub.io/viewgameevents')
 }
 
 export function gotoWatchGames(){
