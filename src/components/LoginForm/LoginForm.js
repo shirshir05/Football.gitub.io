@@ -13,9 +13,7 @@ const axiosCookieJarSupport = require('../../axios-cookiejar-support-master');
 
 axiosCookieJarSupport(axios);
 
-const cookieJar = new tough.CookieJar();
-axios.defaults.jar = cookieJar;
-axios.defaults.withCredentials = true;
+//const cookieJar = new tough.CookieJar();
 
 
 function LoginForm(props) {
@@ -25,6 +23,11 @@ function LoginForm(props) {
         password : "",
         successMessage: null
     })
+    const cookieJar = new tough.CookieJar();
+cookieJar.value = state.username;
+axios.defaults.jar = cookieJar;
+axios.defaults.withCredentials = true;
+
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -51,10 +54,11 @@ function LoginForm(props) {
         axios.post(API_BASE_URL+'login', payload,{
             jar: cookieJar,
             withCredentials: true
+        
         })
             .then(function (response) {
                 const config = response.config;
-                // axios.defaults.jar === config.jar
+                //axios.defaults.jar === config.jar
             console.log(config.jar.toJSON());
                 console.log(cookieJar);
                 if(response.status === 200){
