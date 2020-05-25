@@ -1,10 +1,22 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import './LoginForm.css';
 import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
 import {redirectToHome, redirectToRegister} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
+
+
+const axios = require('axios').default;
+const tough = require('tough-cookie');
+const axiosCookieJarSupport = require('../../axios-cookiejar-support-master');
+
+axiosCookieJarSupport(axios);
+
+const cookieJar = new tough.CookieJar();
+axios.defaults.jar = cookieJar;
+axios.defaults.withCredentials = true;
+
 
 function LoginForm(props) {
     props.updateTitle('Login')
@@ -36,8 +48,15 @@ function LoginForm(props) {
             password: '${state.password}'
         }`
 
-        axios.post(API_BASE_URL+'login', payload)
+        axios.post(API_BASE_URL+'login', payload,{
+            jar: cookieJar,
+            withCredentials: true
+        })
             .then(function (response) {
+                const config = response.config;
+                // axios.defaults.jar === config.jar
+            console.log(config.jar.toJSON());
+                console.log(cookieJar);
                 if(response.status === 200){
                     setState(prevState => ({
                         ...prevState,
@@ -51,6 +70,8 @@ function LoginForm(props) {
                 }
             })
             .catch(function (error) {
+             
+                console.log(cookieJar);
                 console.log(error);
             });
     }
