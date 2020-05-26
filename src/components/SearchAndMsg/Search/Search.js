@@ -1,7 +1,3 @@
-<<<<<<< HEAD:src/components/SearchAndMsg/Search/Search.js
-=======
-import Modal from '../../Modal/ModalMenuButton'
->>>>>>> alerts:src/components/Search/Search.js
 import React, {Component} from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../../constants/apiContants';
