@@ -4,7 +4,6 @@ import Header from './components/Header/Header'
 import {Router, Switch, Route} from "react-router-dom"
 import AlertComponent from './components/AlertComponent/AlertComponent'
 import history from "../src/components/history"
-import {HOST} from "./constants/apiContants"
 
 // pages:
   // entrance:

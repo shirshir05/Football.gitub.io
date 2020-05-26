@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuButton from '../MenuButton/MenuButton'
-import {redirectToLogin, gotoAddLeague, gotoApproveTeam, gotoUpdateSeason, gotoSchedulingPolicy, gotoAddTeamToLeague, gotoAddRemoveReferee} from '../Redirect/Redirect'
+import {redirectToLogin, gotoAddLeague, gotoApproveTeam, gotoUpdateSeason, gotoSchedulingPolicy, gotoAddTeamToLeague, gotoAddRemoveReferee,gotoWatchGameEvents} from '../Redirect/Redirect'
 import { withRouter } from "react-router-dom";
 import SearchAndAlerts from '../SearchAndMsg/MenuBar';
 
@@ -32,6 +32,7 @@ function HomeUnionRepresentative(props) {
             <MenuButton btnText="Add or remove referees" handle={gotoAddRemoveReferee}></MenuButton>
             {/* <MenuButton btnText="Manage games"></MenuButton>  */}
             <MenuButton btnText="Approve team creation" handle={gotoApproveTeam}></MenuButton>
+            <MenuButton btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
             {/* <MenuButton btnText="Finance"></MenuButton> */}
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div> 

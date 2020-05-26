@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuButton from '../MenuButton/MenuButton'
 import { withRouter } from "react-router-dom";
-import {redirectToLogin, gotoWatchLogs, gotoChangeStatusAdmin, gotoAnswerComplaints} from '../Redirect/Redirect'
+import {redirectToLogin, gotoWatchLogs, gotoChangeStatusAdmin, gotoAnswerComplaints,gotoWatchGameEvents} from '../Redirect/Redirect'
 import SearchAndAlerts from '../SearchAndMsg/MenuBar';
 
 function HomeSysAdmin(props) {
@@ -18,6 +18,7 @@ function HomeSysAdmin(props) {
             <MenuButton btnText="Answer Complaints" handle={gotoAnswerComplaints}></MenuButton>
             <MenuButton btnText="Change Team Status" handle={gotoChangeStatusAdmin}></MenuButton>
             <MenuButton btnText="Watch System Logs" handle={gotoWatchLogs}></MenuButton>
+            <MenuButton btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
             {/* <MenuButton btnText="Edit personal details"></MenuButton> */}
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div>  
