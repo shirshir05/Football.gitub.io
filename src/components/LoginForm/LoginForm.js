@@ -7,9 +7,6 @@ import { withRouter } from "react-router-dom";
 import {redirectToHome, redirectToRegister} from '../Redirect/Redirect'
 import SubmitButton from '../InputFields/SubmitButton';
 
-import Cookies from 'js-cookie';
-
-
 
 
 function LoginForm(props) {
@@ -40,14 +37,27 @@ function LoginForm(props) {
         
         // this will send the messag to the server when it will work:
         const payload=`{ 
-            username: ${state.username},
+            username: '${state.username}',
             password: '${state.password}'
         }`
-
-        axios.post(API_BASE_URL+'login', payload)
+        sessionStorage.setItem('username', "2");
+        let token = sessionStorage.getItem("username");
+    
+          /*
+          {
+            headers: {
+            'Access-Control-Allow-Credentials': 'true',
+            'Authorization': `Basic ${token}`
+            }
+          }
+          */
+     //,{withCredentials: true } ,
+        axios.post(API_BASE_URL+'login', payload ,{withCredentials: true })
             .then(function (response) {
+                sessionStorage.setItem('username', state.username);
+                sessionStorage.removeItem
+                console.log(sessionStorage.getItem("username"));
                 //axios.defaults.jar === config.jar
-                Cookies.set('key=1234; value=456');
                 if(response.status === 200){
                     setState(prevState => ({
                         ...prevState,

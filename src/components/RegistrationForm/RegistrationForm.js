@@ -29,11 +29,11 @@ function RegistrationForm(props) {
                 username:${userDetails.username},
                 password:'${userDetails.password}',
                 role:${userDetails.role},
-                email:${userDetails.email}                
+                email:${userDetails.email},
             }`
             axios.post(API_BASE_URL+'registration', payload)
                 .then(function (response) {
-                    console.log(response)
+                    sessionStorage.setItem('username', userDetails.username);
                     if(response.status === 200){
                         setUserDetails(prevState => ({
                             ...prevState,
