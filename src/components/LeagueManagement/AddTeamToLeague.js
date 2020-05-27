@@ -42,7 +42,7 @@ function AddTeamToLeague(props) {
             }`
             request = 'setrefereeonleague'
         }
-        axios.post(API_BASE_URL+request, payload)
+        axios.post(API_BASE_URL+request, payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

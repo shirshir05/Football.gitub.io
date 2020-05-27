@@ -20,7 +20,7 @@ function WatchSysLogs(props) {
         }))
     }
     const sendDetailsToServer = () => {
-        axios.post(API_BASE_URL+'watchlogger/'+details.path)
+        axios.post(API_BASE_URL+'watchlogger/'+details.path, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

@@ -30,7 +30,7 @@ function AddRemoveObjectFromTeam(props) {
             objectname:${details.objectName},
             addremove:'${details.addOrRemove}'
         }`
-        axios.post(API_BASE_URL+'addremove'+objectType, payload)
+        axios.post(API_BASE_URL+'addremove'+objectType, payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

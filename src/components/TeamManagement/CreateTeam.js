@@ -24,7 +24,7 @@ function CreateTeam(props) {
             name:'${details.name}',
             field:'${details.field}',
         }`
-        axios.post(API_BASE_URL+'addteam', payload)
+        axios.post(API_BASE_URL+'addteam', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

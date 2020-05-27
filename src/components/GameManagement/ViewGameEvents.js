@@ -34,7 +34,7 @@ class ViewGameEvents extends Component{
     sendGameId(gameId){
         new Promise((resolved, rejected) => {
             try{
-                axios.get(API_BASE_URL+'watchgameevent/'+gameId)
+                axios.get(API_BASE_URL+'watchgameevent/'+gameId, {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)

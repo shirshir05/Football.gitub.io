@@ -26,7 +26,7 @@ function ChangeTeamStatus(props) {
             nameteam:${details.name},
             status:'${details.status}'
         }`
-        axios.post(API_BASE_URL+'changestatusforteam', payload)
+        axios.post(API_BASE_URL+'changestatusforteam', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

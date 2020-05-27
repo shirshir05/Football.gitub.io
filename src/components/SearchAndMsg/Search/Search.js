@@ -35,7 +35,7 @@ class Search extends Component{
     sendSearch(word){
         new Promise(() => {
             try{
-                axios.get(API_BASE_URL+'search/'+word)
+                axios.get(API_BASE_URL+'search/'+word, {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)
@@ -76,7 +76,7 @@ class Search extends Component{
     sendSearchHistory(){
         new Promise(() => {
             try{
-                axios.get(API_BASE_URL+'watchsearchhistory')
+                axios.get(API_BASE_URL+'watchsearchhistory', {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)
