@@ -28,7 +28,7 @@ function SchedulingPolicy(props) {
             seasonname:'${details.season}',
             policy:${details.policy}
         }`
-        axios.post(API_BASE_URL+"onschedulingpolicy", payload, {withCredentials: true })
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/'+"onschedulingpolicy", payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

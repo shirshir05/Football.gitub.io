@@ -16,7 +16,7 @@ function AlertsInModal(props) {
         // get alerts from server
       new Promise((resolved, rejected) => {
         try{
-            axios.get(API_BASE_URL+'returnalert', {withCredentials: true })
+            axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/'+'returnalert', {withCredentials: true })
               .then(response => {
                 if(response.status === 200){
                   console.log(response)

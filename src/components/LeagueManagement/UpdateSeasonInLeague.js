@@ -43,7 +43,7 @@ function UpdateSeason(props) {
             loss:'${details.lose}',
             equal:'${details.even}'
         }`
-        axios.post(API_BASE_URL+request, payload, {withCredentials: true })
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/'+request, payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({
