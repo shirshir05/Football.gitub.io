@@ -23,7 +23,7 @@ function SendComplaint(props){
         const payload=`{
             complaintdescription:${details.complaint}
         }`
-        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/'+'sendcomplaint', payload, {withCredentials: true })
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/sendcomplaint', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

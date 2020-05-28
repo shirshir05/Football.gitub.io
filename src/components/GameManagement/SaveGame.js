@@ -32,7 +32,7 @@ function SaveGame(props) {
             guestGoals:'${details.guestGoals}',
             gameId:'${details.gameId}'
         }`
-        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/'+'savegame', payload, {withCredentials: true })
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/savegame', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

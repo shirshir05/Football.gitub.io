@@ -31,7 +31,7 @@ function RegistrationForm(props) {
                 role:${userDetails.role},
                 email:${userDetails.email}                
             }`
-            axios.post(API_BASE_URL+'username/'+'registration', payload, {withCredentials: true })
+            axios.post(API_BASE_URL+'username/registration', payload, {withCredentials: true })
                 .then(function (response) {
                     console.log(response)
                     if(response.status === 200){

@@ -34,7 +34,7 @@ function LoginForm(props) {
             password: '${state.password}'
         }`
 
-        axios.post(API_BASE_URL+'username/'+'login', payload, {withCredentials: true })
+        axios.post(API_BASE_URL+'username/login', payload, {withCredentials: true })
             .then(function (response) {
                 //axios.defaults.jar === config.jar
                 Cookies.set('key=1234; value=456');

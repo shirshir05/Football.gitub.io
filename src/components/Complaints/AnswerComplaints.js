@@ -24,7 +24,7 @@ class AnswerComplaints extends Component{
 
         new Promise((resolved, rejected) => {
             try{
-                axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/'+'watchcomplaints', {withCredentials: true })
+                axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/watchcomplaints', {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)

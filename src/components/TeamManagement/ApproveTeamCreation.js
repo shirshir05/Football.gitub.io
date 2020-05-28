@@ -21,7 +21,7 @@ class ApproveTeamCreation extends Component{
 
         new Promise((resolved, rejected) => {
             try{
-                axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/'+'teamsforapproval', {withCredentials: true })
+                axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/teamsforapproval', {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)
@@ -84,7 +84,7 @@ class ApproveTeamCreation extends Component{
     }
 
     approveTeamInServer(teamName){
-        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/'+'approveteam/'+teamName, {withCredentials: true })
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+teamName, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     this.setState(prevState => ({
