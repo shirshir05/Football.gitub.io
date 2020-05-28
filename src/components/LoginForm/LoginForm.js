@@ -9,7 +9,7 @@ import SubmitButton from '../InputFields/SubmitButton';
 
 
 
-function LoginForm(props) {
+export function LoginForm(props) {
     props.updateTitle('Login')
     const [state , setState] = useState({
         username : "",
@@ -90,5 +90,4 @@ function LoginForm(props) {
         </div>
     )
 }
-
 export default withRouter(LoginForm);
