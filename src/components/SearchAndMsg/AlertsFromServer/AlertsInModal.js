@@ -30,7 +30,6 @@ function AlertsInModal(props) {
         return <FaEnvelopeOpen/>
     }
 
-    console.log(envelopeType())
 
     const [show, setShow] = useState(false);    
     const handleClose = () => setShow(false);
