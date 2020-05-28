@@ -8,7 +8,7 @@ function HomeGuest(props) {
     props.updateTitle('Home')
     return(
         <>
-        <SearchAndAlerts/>
+        <SearchAndAlerts show={false}/>
         <div className="mt-2">
             <h1>Welcome</h1>
             <MenuButton btnText="Register" handle={redirectToRegister}></MenuButton>

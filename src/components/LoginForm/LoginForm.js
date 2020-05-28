@@ -33,6 +33,7 @@ function LoginForm(props) {
         axios.post(API_BASE_URL+'username/login', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
+                    sessionStorage.removeItem('username')
                     sessionStorage.setItem('username', state.username);
                     setState(prevState => ({
                         ...prevState,
