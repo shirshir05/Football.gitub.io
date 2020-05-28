@@ -26,7 +26,7 @@ function AddPermissionsTM(props) {
             username:${details.username},
             permissions:'${details.permissions}'
         }`
-        axios.post(API_BASE_URL+'addpermissiontoteammanger', payload)
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/addpermissiontoteammanger', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({

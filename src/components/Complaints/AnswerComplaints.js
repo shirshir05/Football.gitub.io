@@ -24,7 +24,7 @@ class AnswerComplaints extends Component{
 
         new Promise((resolved, rejected) => {
             try{
-                axios.get(API_BASE_URL+'watchcomplaints')
+                axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/watchcomplaints', {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)
@@ -93,7 +93,7 @@ class AnswerComplaints extends Component{
             ID:'${this.state.id}',
             answer:'${this.state.answer}'            
         }`
-        axios.post(API_BASE_URL+'answercomplaints', payload)
+        axios.post(+'answercomplaints', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     this.setState(prevState => ({

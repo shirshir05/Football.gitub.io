@@ -17,7 +17,7 @@ class ViewGamesReferee extends Component{
 
         new Promise(() => {
             try{
-                axios.get(API_BASE_URL+'watchgame')
+                axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/watchgame', {withCredentials: true })
                     .then(response => {
                         if(response.status === 200){
                             console.log(response)

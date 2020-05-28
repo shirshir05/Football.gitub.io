@@ -22,7 +22,7 @@ function AddLeague(props) {
         const payload=`{
             name:'${leagueDetails.name}',
         }`
-        axios.post(API_BASE_URL+'defineleague', payload)
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/defineleague', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({
