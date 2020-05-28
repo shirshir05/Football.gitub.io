@@ -11,7 +11,7 @@ function AddPermissionsTM(props) {
     props.updateTitle('Add permissions to a team manager')
     const [details , setDetails] = useState({
         username : "",
-        permissions : "1",
+        permissions : "Edit_team",
         successMessage: null
     })
     const handleChange = (e) => {
