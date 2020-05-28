@@ -5,6 +5,10 @@ import axios from 'axios';
 import {API_BASE_URL} from '../../../constants/apiContants'
 
 function AlertsInModal(props) {
+    let display = 'initial'
+    if (props.show === false){
+      display = 'none'
+    }
     const [alerts, setState] = useState({
       displayAlerts : ['No alerts to display']
     })
@@ -68,7 +72,7 @@ function AlertsInModal(props) {
 
     return (
         <>
-        <button class="msgBtn" onClick={handleShow}>
+        <button class="msgBtn" onClick={handleShow} style={{ display: display }}>
           <FaEnvelope />
         </button>
         <ModalWindow show={show} handleClose={handleClose} Header={props.Header} Body={body()}/>

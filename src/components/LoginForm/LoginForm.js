@@ -32,11 +32,8 @@ function LoginForm(props) {
         }`
         axios.post(API_BASE_URL+'username/login', payload, {withCredentials: true })
             .then(function (response) {
-                sessionStorage.setItem('username', state.username);
-                sessionStorage.removeItem
-                console.log(sessionStorage.getItem("username"));
-                //axios.defaults.jar === config.jar
                 if(response.status === 200){
+                    sessionStorage.removeItem('username')
                     sessionStorage.setItem('username', state.username);
                     setState(prevState => ({
                         ...prevState,
