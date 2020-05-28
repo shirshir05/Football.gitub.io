@@ -26,39 +26,18 @@ function LoginForm(props) {
         }))
     }
     const handleSubmitClick = () => {
-
-    //    //  this should be removed:
-    //     setState(prevState => ({
-    //         ...prevState,
-    //         'successMessage' : 'Login successful. Redirecting to home page..'
-    //     }))
-    //     redirectToHome(state.username,'');
-    //     props.showError(null)
-        
-        // this will send the messag to the server when it will work:
         const payload=`{ 
             username: '${state.username}',
             password: '${state.password}'
         }`
-        sessionStorage.setItem('username', "2");
-        let token = sessionStorage.getItem("username");
-    
-          /*
-          {
-            headers: {
-            'Access-Control-Allow-Credentials': 'true',
-            'Authorization': `Basic ${token}`
-            }
-          }
-          */
-     //,{withCredentials: true } ,
-        axios.post(API_BASE_URL+'login', payload ,{withCredentials: true })
+        axios.post(API_BASE_URL+'username/login', payload, {withCredentials: true })
             .then(function (response) {
                 sessionStorage.setItem('username', state.username);
                 sessionStorage.removeItem
                 console.log(sessionStorage.getItem("username"));
                 //axios.defaults.jar === config.jar
                 if(response.status === 200){
+                    sessionStorage.setItem('username', state.username);
                     setState(prevState => ({
                         ...prevState,
                         'successMessage' : 'Login successful. Redirecting to home page..'

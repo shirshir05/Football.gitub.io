@@ -23,7 +23,9 @@ export function goBack(){
 }
 
 export function redirectToLogin(){
-    axios.get(API_BASE_URL+'logout')
+    axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/logout', 
+        `username:'${sessionStorage.getItem("username")}'`, {withCredentials: true })
+    sessionStorage.removeItem("username")
     history.push('/Football.gitub.io/login'); 
 }
 

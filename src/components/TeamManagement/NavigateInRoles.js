@@ -11,7 +11,7 @@ function NavigateInRoles(props) {
         isButtonDisabled: false
     })
     const sendDetailsToServer = (objectType) => {
-        axios.get(API_BASE_URL+'isa/'+objectType)
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/isa/'+objectType, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     redirectToHome('',objectType)

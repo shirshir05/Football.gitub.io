@@ -25,7 +25,7 @@ function RegisterToGameAlert(props){
         const payload=`{
             gamenumber:${details.gameId}
         }`
-        axios.post(API_BASE_URL+'registertogamealert', payload)
+        axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/registertogamealert', payload, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     setDetails(prevState => ({
