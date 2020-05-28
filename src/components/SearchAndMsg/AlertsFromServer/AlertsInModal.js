@@ -15,19 +15,21 @@ function AlertsInModal(props) {
     })
 
     const envelopeType = () => {
-      axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/readallalrets', {withCredentials: true })
-        .then(response => {
-          if(response.status === 200){
-            return <FaEnvelope />
-          }
-          else {
+      if(props.show !== false){
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/readallalrets', {withCredentials: true })
+          .then(response => {
+            if(response.status === 200){
+              return <FaEnvelope />
+            }
+            else {
+              return <FaEnvelopeOpen/>
+            }
+          })
+          .catch(error => {
             return <FaEnvelopeOpen/>
-          }
-        })
-        .catch(error => {
+          })
           return <FaEnvelopeOpen/>
-        })
-        return <FaEnvelopeOpen/>
+      }
     }
 
     console.log(envelopeType())
