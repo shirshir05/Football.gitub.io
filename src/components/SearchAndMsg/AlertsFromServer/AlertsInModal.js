@@ -44,7 +44,6 @@ function AlertsInModal(props) {
             axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/readallalrets', {withCredentials: true })
               .then(response => {
                 if(response.status === 200){
-                  console.log(response)
                   let list = response.data;
                   return list
                 }
