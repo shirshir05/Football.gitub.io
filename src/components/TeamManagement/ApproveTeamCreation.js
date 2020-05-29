@@ -84,7 +84,7 @@ class ApproveTeamCreation extends Component{
     }
 
     approveTeamInServer(teamName){
-        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+ teamName.replace(/ /g, '%20'), {withCredentials: true })
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+  teamName.replace(/%20/g, " "), {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     this.setState(prevState => ({
