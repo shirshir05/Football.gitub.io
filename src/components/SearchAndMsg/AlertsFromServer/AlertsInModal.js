@@ -16,7 +16,7 @@ function AlertsInModal(props) {
 
     const envelopeType = () => {
       if(props.show !== false){
-        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/readallalrets', {withCredentials: true })
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/alertnew', {withCredentials: true })
           .then(response => {
             if(response.status === 200){
               return <FaEnvelope />
