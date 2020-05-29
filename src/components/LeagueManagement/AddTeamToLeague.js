@@ -61,7 +61,7 @@ function AddTeamToLeague(props) {
     const handleSubmitClick = () => {
         //e.preventDefault();
         if(details.leaugueName.length && details.name.length){
-            sendDetailsToServer()
+            sendDetailsToServer(details.teamOrReferee)
         }
         else{
             props.showError('Please eneter valid parameters')
