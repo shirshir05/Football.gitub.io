@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Football.gitub.io/precache-manifest.183f6754d19f7b3b6ae082730c6f9bfd.js"
+  "/Football.gitub.io/precache-manifest.31183c2187b7703f373ce18e0cef87c8.js"
 );
 
 self.addEventListener('message', (event) => {

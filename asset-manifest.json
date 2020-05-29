@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Football.gitub.io/static/css/main.04798336.chunk.css",
-    "main.js": "/Football.gitub.io/static/js/main.9bcca872.chunk.js",
-    "main.js.map": "/Football.gitub.io/static/js/main.9bcca872.chunk.js.map",
+    "main.js": "/Football.gitub.io/static/js/main.ad485b02.chunk.js",
+    "main.js.map": "/Football.gitub.io/static/js/main.ad485b02.chunk.js.map",
     "runtime-main.js": "/Football.gitub.io/static/js/runtime-main.c718cb01.js",
     "runtime-main.js.map": "/Football.gitub.io/static/js/runtime-main.c718cb01.js.map",
     "static/css/2.ecffae5e.chunk.css": "/Football.gitub.io/static/css/2.ecffae5e.chunk.css",
     "static/js/2.6f024a90.chunk.js": "/Football.gitub.io/static/js/2.6f024a90.chunk.js",
     "static/js/2.6f024a90.chunk.js.map": "/Football.gitub.io/static/js/2.6f024a90.chunk.js.map",
     "index.html": "/Football.gitub.io/index.html",
-    "precache-manifest.183f6754d19f7b3b6ae082730c6f9bfd.js": "/Football.gitub.io/precache-manifest.183f6754d19f7b3b6ae082730c6f9bfd.js",
+    "precache-manifest.31183c2187b7703f373ce18e0cef87c8.js": "/Football.gitub.io/precache-manifest.31183c2187b7703f373ce18e0cef87c8.js",
     "service-worker.js": "/Football.gitub.io/service-worker.js",
     "static/css/2.ecffae5e.chunk.css.map": "/Football.gitub.io/static/css/2.ecffae5e.chunk.css.map",
     "static/css/main.04798336.chunk.css.map": "/Football.gitub.io/static/css/main.04798336.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.ecffae5e.chunk.css",
     "static/js/2.6f024a90.chunk.js",
     "static/css/main.04798336.chunk.css",
-    "static/js/main.9bcca872.chunk.js"
+    "static/js/main.ad485b02.chunk.js"
   ]
 }
