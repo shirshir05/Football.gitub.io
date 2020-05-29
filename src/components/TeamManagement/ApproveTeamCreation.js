@@ -84,7 +84,8 @@ class ApproveTeamCreation extends Component{
     }
 
     approveTeamInServer(teamName){
-        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+encodeURIComponent(teamName.trim()), {withCredentials: true })
+        
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+decodeURI(teamName), {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     this.setState(prevState => ({
