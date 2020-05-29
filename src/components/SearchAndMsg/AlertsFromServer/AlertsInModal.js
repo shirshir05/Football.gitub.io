@@ -32,6 +32,7 @@ function AlertsInModal(props) {
       }
     }
 
+    var envelopeIcon = envelopeType()
 
     const [show, setShow] = useState(false);    
     const handleClose = () => setShow(false);
@@ -93,7 +94,7 @@ function AlertsInModal(props) {
     return (
         <>
         <button class="msgBtn" onClick={handleShow} style={{ display: display }}>
-          {envelopeType()}
+          {envelopeIcon}
         </button>
         <ModalWindow show={show} handleClose={handleClose} Header={props.Header} Body={body()}/>
         </>
