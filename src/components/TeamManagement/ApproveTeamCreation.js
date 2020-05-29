@@ -84,7 +84,7 @@ class ApproveTeamCreation extends Component{
     }
 
     approveTeamInServer(teamName){
-        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+  teamName.replace(/%20/g, " "), {withCredentials: true })
+        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+  teamName, {withCredentials: true })
             .then(function (response) {
                 if(response.status === 200){
                     this.setState(prevState => ({
@@ -106,7 +106,7 @@ class ApproveTeamCreation extends Component{
         let a = this.state.toApprove
         let b =  this.state.teamsList
         if(a.length && b.some(item => this.state.toApprove === item)) {
-            this.approveTeamInServer(this.state.toApprove)    
+            this.approveTeamInServer(this.state.toApprove.replace(/%20/g," "))    
         } else {
             this.props.showError('Please enter a valid team name');
         }
