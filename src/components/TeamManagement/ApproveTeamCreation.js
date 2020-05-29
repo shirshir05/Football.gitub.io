@@ -106,7 +106,8 @@ class ApproveTeamCreation extends Component{
         let a = this.state.toApprove
         let b =  this.state.teamsList
         if(a.length && b.some(item => this.state.toApprove === item)) {
-            this.approveTeamInServer(this.state.toApprove.replace(/%20/g," "))    
+            console.log(this.state.toApprove.replace(/ /g, '%20'))
+            this.approveTeamInServer(this.state.toApprove.replace(/ /g, '%20'))    
         } else {
             this.props.showError('Please enter a valid team name');
         }
