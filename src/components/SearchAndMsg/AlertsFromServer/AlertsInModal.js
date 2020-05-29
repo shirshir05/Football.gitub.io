@@ -6,7 +6,7 @@ import {API_BASE_URL} from '../../../constants/apiContants'
 
 function AlertsInModal(props) {
     let display = 'initial'
-    if (props.show === false){
+    if (props.show == false){
       display = 'none'
     }
     
