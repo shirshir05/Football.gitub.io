@@ -26,7 +26,7 @@ function SchedulingPolicy(props) {
         const payload=`{
             nameleague:${details.leaugueName},
             seasonname:'${details.season}',
-            policy:${details.policy}
+            policy:'${details.policy}'
         }`
         axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/onschedulingpolicy', payload, {withCredentials: true })
             .then(function (response) {
