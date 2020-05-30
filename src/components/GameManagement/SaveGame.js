@@ -26,10 +26,10 @@ function SaveGame(props) {
     }
     const sendDetailsToServer = () => {
         const payload=`{
-            league:'${details.leaugueName}',
-            seasonYear:'${details.season}',
-            hostGoals:'${details.hostGoals}',
-            guestGoals:'${details.guestGoals}',
+            nameleague:'${details.leaugueName}',
+            year:'${details.season}',
+            goalhost:'${details.hostGoals}',
+            goalguest:'${details.guestGoals}',
             gameId:'${details.gameId}'
         }`
         axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/savegame', payload, {withCredentials: true })
