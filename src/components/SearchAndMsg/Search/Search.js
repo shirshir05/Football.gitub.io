@@ -20,7 +20,9 @@ class Search extends Component{
         super(props);
         this.handleChange = this.handleChange.bind(this)
         this.handleSearch = this.handleSearch.bind(this)
-        this.handleSearchHistory = this.handleSearchHistory.bind(this)
+        this.sendSearchHistory = this.sendSearchHistory.bind(this)
+        this.sendSearch = this.sendSearch.bind(this)
+        this.body = this.body.bind(this)
         
     }
 
@@ -81,18 +83,6 @@ class Search extends Component{
                         if(response.status === 200){
                             console.log(response)
                             let result = response.data;
-                           // return list
-                    //    }
-                      //})
-                    //   .then(list => {
-                    //     this.setState(prevState => ({
-                    //         ...prevState,
-                    //         'gameDetails' : list
-                    //     }))
-                    //     return list;                
-                    //   })
-                    //.then(result => {
-                        // verify the result is valid and not empty
                             if(result && result[0] !== ""){
                                 this.setState(prevState => ({
                                     ...prevState,
@@ -130,10 +120,6 @@ class Search extends Component{
         if(this.state.searchWord.length) {
             this.sendSearch(this.state.searchWord)    
         }
-    }
-
-    handleSearchHistory(){
-        this.sendSearchHistory()
     }
 
     body(){
