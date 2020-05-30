@@ -43,7 +43,7 @@ function AlertsInModal(props) {
       }
     }
 
-    //setTimeout(envelopeType(), 100000)
+    setTimeout(envelopeType(), 10000000)
 
     const [show, setShow] = useState(false);    
     const handleClose = () => setShow(false);
