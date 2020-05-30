@@ -10,7 +10,7 @@ function SchedulingPolicy(props) {
     const [details , setDetails] = useState({
         leaugueName : "",
         season : "2000",
-        policy:"",
+        policy:"1",
         successMessage: null
     })
     const handleChange = (e) => {
