@@ -145,7 +145,7 @@ class Search extends Component{
                     <div className="form-group text-left">
                     {this.state.displaySearchResults}
                     </div>
-                    <SubmitButton handleSubmitClick={this.handleSearch} buttonText="View search history"/>
+                    <SubmitButton handleSubmitClick={this.sendSearchHistory} buttonText="View search history"/>
                     <div className="form-group text-center">
                     {this.state.displaySearchHistory}
                     </div>
