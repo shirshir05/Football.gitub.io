@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "16bb04e9de97b3bbbec7773601209701",
+    "revision": "fdf6a2e26963f43d6669a593c3e97ea4",
     "url": "/Football.gitub.io/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Football.gitub.io/static/css/2.ecffae5e.chunk.css"
   },
   {
-    "revision": "cdb67a464a7160ce8a4b",
+    "revision": "4936d2115d39ec3a13b0",
     "url": "/Football.gitub.io/static/css/main.04798336.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Football.gitub.io/static/js/2.e3abcf79.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cdb67a464a7160ce8a4b",
-    "url": "/Football.gitub.io/static/js/main.7b47f6da.chunk.js"
+    "revision": "4936d2115d39ec3a13b0",
+    "url": "/Football.gitub.io/static/js/main.8f8b44da.chunk.js"
   },
   {
     "revision": "49830865d1938dc54e91",
