@@ -27,7 +27,7 @@ function HomeReferee(props) {
             <MenuButton btnText="Save game" handle={gotoSaveGame}></MenuButton>
             <MenuButton btnText="Create new event" handle={newEvent}></MenuButton>
             <MenuButton btnText="Edit event" handle={existingEvent}></MenuButton>
-            <MenuButton btnText="View all games" handle={gotoWatchGames}></MenuButton>
+            <MenuButton id ='summaryBtn' btnText="View all games" handle={gotoWatchGames}></MenuButton>
             <MenuButton btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div>   

@@ -15,7 +15,7 @@ function HomeCoach(props) {
             </h1>
             <MenuButton btnText="Add a user type to your user" handle={gotoAddRole}></MenuButton>
             <MenuButton btnText="Enter other roles menus" handle={gotoNavigateRole}></MenuButton>
-            <MenuButton btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
+            <MenuButton id ='summaryBtn' btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div>   
         </>
