@@ -92,6 +92,7 @@ function UpdateEvent(props) {
                 </div>
                 </div>
                 <NumberInput label="Game ID" id="gameId" placeholder="Enter in digits" state={details.gameId} handleChange={handleChange}/>
+                <div style={{display: props.newSeason ? 'block' : 'none' }}><label>The time of the event will be set as the current time</label></div>
                 <SubmitButton buttonText={buttonText} handleSubmitClick={handleSubmitClick}/>
             </form>
             <div className="alert alert-success mt-2" style={{display: details.successMessage ? 'block' : 'none' }} role="alert">

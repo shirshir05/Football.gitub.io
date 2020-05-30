@@ -46,7 +46,7 @@ function NavigateInRoles(props) {
                 <button type="submit" className="btn btn-primary" disabled={state.isButtonDisabled} onClick={(e) => handleSubmitClick("teamowner",e)}>Team Owner</button>
             </div>
             <div className="form-group text-center">
-                <button type="submit" className="btn btn-primary" odisabled={state.isButtonDisabled} nClick={(e) => handleSubmitClick("teammanager",e)}>Team Manager</button>
+                <button type="submit" className="btn btn-primary" disabled={state.isButtonDisabled} onClick={(e) => handleSubmitClick("teammanager",e)}>Team Manager</button>
             </div>
             <div className="form-group text-center">
                 <button type="submit" className="btn btn-primary" disabled={state.isButtonDisabled} onClick={(e) => handleSubmitClick("player",e)}>Player</button>

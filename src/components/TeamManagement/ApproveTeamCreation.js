@@ -18,6 +18,7 @@ class ApproveTeamCreation extends Component{
         super(props);
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmitClick = this.handleSubmitClick.bind(this)
+        this.approveTeamInServer = this.approveTeamInServer.bind(this)
 
         new Promise((resolved, rejected) => {
             try{
@@ -85,7 +86,7 @@ class ApproveTeamCreation extends Component{
 
     approveTeamInServer(teamName){
         axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/approveteam/'+  teamName, {withCredentials: true })
-            .then(function (response) {
+            .then(response => {
                 if(response.status === 200){
                     this.setState(prevState => ({
                         ...prevState,
@@ -96,7 +97,7 @@ class ApproveTeamCreation extends Component{
                     this.props.showError(response.data);
                 }
             })
-            .catch(function (error) {
+            .catch(error => {
                 console.log(error);
             });   
     }
