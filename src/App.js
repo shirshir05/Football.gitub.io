@@ -6,6 +6,8 @@ import AlertComponent from './components/AlertComponent/AlertComponent'
 import history from "../src/components/history"
 
 // pages:
+  //start:
+import SelectStart from './components/StartSystem/SelectStart'
   // entrance:
 import LoginForm from './components/LoginForm/LoginForm'
 import RegistrationForm from './components/RegistrationForm/RegistrationForm'
@@ -42,6 +44,7 @@ import ViewGameEvents from './components/GameManagement/ViewGameEvents'
 import ViewGamesReferee from './components/GameManagement/ViewGamesReferee'
 import SendComplaint from './components/Complaints/SendComplaint'
 import RegisterToGame from './components/GameManagement/RegisterToGame'
+import EmptyStart from './components/StartSystem/EmptyStart'
 
 function App() {
   const [title, updateTitle] = useState(null)
@@ -53,6 +56,14 @@ function App() {
       <Header title={title}/>
         <div className="container d-flex align-items-center flex-column">
           <Switch>
+            {/* start system: */}
+            <Route path= "/Football.gitub.io/selectstart">
+              <SelectStart showError={updateErrorMessage} updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/Football.gitub.io/" exact={true}>
+              <EmptyStart showError={updateErrorMessage} updateTitle={updateTitle}/>
+            </Route>
+            {/* login and register: */}
             <Route path= "/Football.gitub.io/register">
               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
@@ -60,9 +71,6 @@ function App() {
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
             {/* home pages: */}
-            <Route path="/Football.gitub.io/" exact={true}>
-              <HomeGuest updateTitle={updateTitle}/>
-            </Route>
             <Route path="/Football.gitub.io/home/guest">
               <HomeGuest updateTitle={updateTitle}/>
             </Route>

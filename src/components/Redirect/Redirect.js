@@ -120,3 +120,7 @@ export function gotoSendComplaint(){
 export function gotoGameAlert(){
     history.push('gamealert')
 }
+
+export function gotoSelectStart(){
+    history.push('selectstart')
+}
