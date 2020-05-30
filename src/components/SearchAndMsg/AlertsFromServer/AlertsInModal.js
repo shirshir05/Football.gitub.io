@@ -23,8 +23,11 @@ function AlertsInModal(props) {
       try{
         let response = await axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/alertnew', {withCredentials: true })
           if(response.status === 200){
-            if(response.data && response.data.length === 0){
-              // when the length is 0 then there is a user connected to the system
+            if(response.data && response.data.length > 0){
+              // when the data length is > 0 then there is NO subscription.
+              // do nothing
+            }
+            else{
               setEnvelope(prevState => ({
                 ...prevState,
                 'icon' : <FaEnvelope />
