@@ -14,25 +14,36 @@ function AlertsInModal(props) {
       displayAlerts : ['No alerts to display']
     })
 
-    const envelopeType = () => {
+    const [envelopeIcon, setEnvelope] = useState({
+      icon : <FaEnvelopeOpen/>
+    })
+
+    const envelopeType = async() => {
       if(props.show !== false){
-        axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/alertnew', {withCredentials: true })
-          .then(response => {
-            if(response.status === 200){
-              return <FaEnvelope />
-            }
-            else {
-              return <FaEnvelopeOpen/>
-            }
-          })
-          .catch(error => {
-            return <FaEnvelopeOpen/>
-          })
-          return <FaEnvelopeOpen/>
+      try{
+        let response = await axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/alertnew', {withCredentials: true })
+          if(response.status === 200){
+            setEnvelope(prevState => ({
+              ...prevState,
+              'icon' : <FaEnvelope />
+            }))
+          }
+          else {
+            setEnvelope(prevState => ({
+              ...prevState,
+              'icon' : <FaEnvelopeOpen/>
+            }))
+          }
+      }catch{
+        setEnvelope(prevState => ({
+          ...prevState,
+          'icon' : <FaEnvelopeOpen/>
+        }))
+      }
       }
     }
 
-    var envelopeIcon = envelopeType()
+    setTimeout(envelopeType(), 1000)
 
     const [show, setShow] = useState(false);    
     const handleClose = () => setShow(false);
@@ -93,7 +104,7 @@ function AlertsInModal(props) {
     return (
         <>
         <button class="msgBtn" onClick={handleShow} style={{ display: display }}>
-          {envelopeIcon}
+          {envelopeIcon.icon}
         </button>
         <ModalWindow show={show} handleClose={handleClose} Header={props.Header} Body={body()}/>
         </>

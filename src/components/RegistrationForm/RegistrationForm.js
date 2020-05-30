@@ -29,7 +29,7 @@ function RegistrationForm(props) {
                 username:${userDetails.username},
                 password:'${userDetails.password}',
                 role:${userDetails.role},
-                email:${userDetails.email},
+                email:${userDetails.email}
             }`
             axios.post(API_BASE_URL+'username/registration', payload, {withCredentials: true })
                 .then(function (response) {

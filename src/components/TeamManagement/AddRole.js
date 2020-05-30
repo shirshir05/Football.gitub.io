@@ -21,7 +21,7 @@ function AddRole(props) {
     }
     const sendDetailsToServer = () => {
         const payload=`{
-            role:'${details.userType}'
+            role:'${details.userType}',
             password:'${details.password}'
         }`
         axios.post(API_BASE_URL+sessionStorage.getItem("username")+'/addrole', payload, {withCredentials: true })
@@ -32,7 +32,7 @@ function AddRole(props) {
                         'successMessage' : response.data
                     }))
                     props.showError(null)
-                } else{
+                } else {
                     props.showError(response.data);
                 }
             })
