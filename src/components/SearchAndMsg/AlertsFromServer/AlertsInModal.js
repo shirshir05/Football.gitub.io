@@ -23,10 +23,12 @@ function AlertsInModal(props) {
       try{
         let response = await axios.get(API_BASE_URL+sessionStorage.getItem("username")+'/alertnew', {withCredentials: true })
           if(response.status === 200){
-            setEnvelope(prevState => ({
-              ...prevState,
-              'icon' : <FaEnvelope />
-            }))
+            if(response.data && response.data.length > 0){
+              setEnvelope(prevState => ({
+                ...prevState,
+                'icon' : <FaEnvelope />
+              }))
+            }
           }
           else {
             setEnvelope(prevState => ({
