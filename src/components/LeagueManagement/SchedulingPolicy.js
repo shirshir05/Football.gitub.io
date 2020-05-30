@@ -46,12 +46,7 @@ function SchedulingPolicy(props) {
     }
     const handleSubmitClick = () => {
         //e.preventDefault();
-        console.log(details.leaugueName);
-        console.log(details.win);
-        console.log(details.lose);
-        console.log(details.even);
-        
-        if(details.leaugueName.length && details.win.length && details.lose.length && details.even.length){
+        if(details.leaugueName.length){
             sendDetailsToServer()
         }
         else{
