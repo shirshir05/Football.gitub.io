@@ -18,7 +18,7 @@ function HomeSysAdmin(props) {
             <MenuButton btnText="Answer Complaints" handle={gotoAnswerComplaints}></MenuButton>
             <MenuButton btnText="Change Team Status" handle={gotoChangeStatusAdmin}></MenuButton>
             <MenuButton btnText="Watch System Logs" handle={gotoWatchLogs}></MenuButton>
-            <MenuButton btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
+            <MenuButton id ='summaryBtn' btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
             {/* <MenuButton btnText="Edit personal details"></MenuButton> */}
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div>  

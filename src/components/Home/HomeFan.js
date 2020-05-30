@@ -13,7 +13,7 @@ function HomeGuest(props) {
             <h1>Welcome Fan</h1>
             <MenuButton btnText="Register to game alerts" handle={gotoGameAlert}></MenuButton>
             <MenuButton btnText="Send a complaint" handle={gotoSendComplaint}></MenuButton>
-            <MenuButton btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
+            <MenuButton id ='summaryBtn' btnText="View game events" handle={gotoWatchGameEvents}></MenuButton>
             <MenuButton btnText="Log out" handle={redirectToLogin}></MenuButton>
         </div>
         </>
