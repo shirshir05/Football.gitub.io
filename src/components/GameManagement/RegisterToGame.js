@@ -15,7 +15,7 @@ function RegisterToGameAlert(props){
     const handleChange = (e) => {
         if(e.target.validity.valid){
             const {id , value} = e.target
-            this.setState(prevState => ({
+            setDetails(prevState => ({
                 ...prevState,
                 [id] : value
             }))
